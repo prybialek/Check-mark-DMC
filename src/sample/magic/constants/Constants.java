@@ -1,4 +1,4 @@
-package sample.magic;
+package sample.magic.constants;
 
 public interface Constants {
     int WINDOW_WIDTH = 300;
@@ -11,7 +11,8 @@ public interface Constants {
     String ASCII_LABEL_DESC = "ASCII code:";
     String RESULT_LABEL_DESC = "Result:";
     String RESULT_TEXT_STYLE = "-fx-text-fill: red; -fx-font-weight: bold;";
-    String BUTTON_DESC = "Calculate";
+    String CALC_BUTTON_DESC = "Calculate";
+    String CLEAR_BUTTON_DESC = "Clear";
 
     int GAP_SIZE = 10;
     int HEADER_SIZE = 20;

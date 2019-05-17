@@ -1,4 +1,4 @@
-package sample.magic;
+package sample.magic.window;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,16 +8,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import sample.magic.constants.Constants;
 
 public class FormComponents implements Constants {
 
     private final Text headerText;
     private final Label asciiLabelDesc;
     private final Label resultLabelDesc;
+    private final HBox hbBtnCalc;
+    private final HBox hbBtnClear;
     private TextField asciiCode;
     private TextField resultText;
     private Button calculateButton;
-    private HBox hbBtn;
+    private Button clearButton;
+
 
     public FormComponents() {
         headerText = new Text(HEADER_TEXT);
@@ -28,10 +32,14 @@ public class FormComponents implements Constants {
         resultText = new TextField();
         resultText.setStyle(RESULT_TEXT_STYLE);
         resultText.setDisable(true);
-        calculateButton = new Button(BUTTON_DESC);
-        hbBtn = new HBox(GAP_SIZE);
-        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        hbBtn.getChildren().add(calculateButton);
+        calculateButton = new Button(CALC_BUTTON_DESC);
+        hbBtnCalc = new HBox(GAP_SIZE);
+        hbBtnCalc.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtnCalc.getChildren().add(calculateButton);
+        clearButton = new Button(CLEAR_BUTTON_DESC);
+        hbBtnClear = new HBox(GAP_SIZE);
+        hbBtnClear.setAlignment(Pos.BOTTOM_LEFT);
+        hbBtnClear.getChildren().add(clearButton);
     }
 
     public Text getHeaderText() {
@@ -66,7 +74,15 @@ public class FormComponents implements Constants {
         return calculateButton;
     }
 
-    public HBox getHbBtn() {
-        return hbBtn;
+    public Button getClearButton() {
+        return clearButton;
+    }
+
+    public HBox getHbBtnCalc() {
+        return hbBtnCalc;
+    }
+
+    public HBox getHbBtnClear() {
+        return hbBtnClear;
     }
 }

@@ -2,7 +2,7 @@ package sample;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import sample.magic.WindowConfig;
+import sample.magic.window.WindowConfig;
 
 public class Main extends Application {
 

@@ -1,30 +1,35 @@
-package sample.magic;
+package sample.magic.window;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import sample.magic.constants.Constants;
+import sample.magic.converter.AsciiConverter;
 
 public class WindowConfig implements Constants {
 
-    FormComponents formComponents;
-
     public void loadWindow(Stage primaryStage) {
 
+        primaryStage.setResizable(false);
         primaryStage.setTitle(WINDOW_TITLE);
         GridPane mainGrid = new GridPane();
-        Scene scene = new Scene(mainGrid, WINDOW_WIDTH, WINDOW_HEIGHT);
-        primaryStage.setScene(scene);
 
         FormComponents formComponents = new FormComponents();
         applyGridStyles(mainGrid);
         addFormComponentsToGrid(mainGrid, formComponents);
 
-        formComponents.getCalculateButton().setOnAction(e -> {
-            formComponents.getResultText().setText("Clicked!");
+        formComponents.getCalculateButton().setOnAction(e ->
+                formComponents.getResultText().setText(AsciiConverter.convert(formComponents.getAsciiCode().getText()))
+        );
+
+        formComponents.getClearButton().setOnAction(e -> {
+            formComponents.getResultText().setText("");
+            formComponents.getAsciiCode().setText("");
         });
 
+        primaryStage.setScene(new Scene(mainGrid, WINDOW_WIDTH, WINDOW_HEIGHT));
         primaryStage.show();
     }
 
@@ -41,6 +46,7 @@ public class WindowConfig implements Constants {
         mainGrid.add(formComponents.getAsciiCode(), 1, 1);
         mainGrid.add(formComponents.getResultLabelDesc(), 0, 2);
         mainGrid.add(formComponents.getResultText(), 1, 2);
-        mainGrid.add(formComponents.getHbBtn(), 1, 4);
+        mainGrid.add(formComponents.getHbBtnCalc(), 1, 4);
+        mainGrid.add(formComponents.getHbBtnClear(), 0, 4);
     }
 }
