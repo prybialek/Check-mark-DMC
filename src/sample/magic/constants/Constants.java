@@ -8,7 +8,7 @@ public interface Constants {
 
     String ASCII_LABEL_DESC = "Code:";
     String RESULT_LABEL_DESC = "Result:";
-    String RESULT_TEXT_STYLE = "-fx-text-fill: red; -fx-font-weight: bold;";
+    String RESULT_TEXT_STYLE = "-fx-text-fill: red; -fx-font-weight: bold; -fx-background-color: lightgrey;";
     String CALC_BUTTON_DESC = "Calculate";
     String CLEAR_BUTTON_DESC = "Clear";
 
@@ -16,5 +16,6 @@ public interface Constants {
     int HEADER_SIZE = 20;
     int PADDING_SIZE = 25;
     int WINDOW_WIDTH = 300;
-    int WINDOW_HEIGHT = 275;
+    int WINDOW_HEIGHT = 200;
+    int TEXTFIELDS_WIDTH = 200;
 }

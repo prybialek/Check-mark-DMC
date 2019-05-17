@@ -1,5 +1,6 @@
 package sample.magic.window;
 
+import javafx.beans.binding.BooleanBinding;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,11 +29,14 @@ public class FormComponents implements Constants {
         headerText.setFont(Font.font(HEADER_FONT, FontWeight.NORMAL, HEADER_SIZE));
         asciiLabelDesc = new Label(ASCII_LABEL_DESC);
         code = new TextField();
+        code.setPrefWidth(TEXTFIELDS_WIDTH);
         resultLabelDesc = new Label(RESULT_LABEL_DESC);
         result = new TextField();
+        result.setPrefWidth(TEXTFIELDS_WIDTH);
         result.setStyle(RESULT_TEXT_STYLE);
-        result.setDisable(true);
+        result.setEditable(false);
         calculateButton = new Button(CALC_BUTTON_DESC);
+        calculateButton.disableProperty().bind(createBind());
         hbBtnCalc = new HBox(GAP_SIZE);
         hbBtnCalc.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtnCalc.getChildren().add(calculateButton);
@@ -41,6 +45,20 @@ public class FormComponents implements Constants {
         hbBtnClear.setAlignment(Pos.BOTTOM_LEFT);
         hbBtnClear.getChildren().add(clearButton);
     }
+
+    private BooleanBinding createBind() {
+        return new BooleanBinding() {
+            {
+                super.bind(code.textProperty());
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return (code.getText().isEmpty());
+            }
+        };
+    }
+
 
     public Text getHeaderText() {
         return headerText;
