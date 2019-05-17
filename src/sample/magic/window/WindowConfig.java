@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sample.magic.constants.Constants;
-import sample.magic.converter.AsciiConverter;
+import sample.magic.converter.CodeConverter;
 
 public class WindowConfig implements Constants {
 
@@ -21,16 +21,18 @@ public class WindowConfig implements Constants {
         addFormComponentsToGrid(mainGrid, formComponents);
 
         formComponents.getCalculateButton().setOnAction(e ->
-                formComponents.getResultText().setText(AsciiConverter.convert(formComponents.getAsciiCode().getText()))
+                formComponents.getResult().setText(CodeConverter.convert(formComponents.getCode().getText()))
         );
 
-        formComponents.getClearButton().setOnAction(e -> {
-            formComponents.getResultText().setText("");
-            formComponents.getAsciiCode().setText("");
-        });
+        formComponents.getClearButton().setOnAction(e -> clearForm(formComponents));
 
         primaryStage.setScene(new Scene(mainGrid, WINDOW_WIDTH, WINDOW_HEIGHT));
         primaryStage.show();
+    }
+
+    private void clearForm(FormComponents formComponents) {
+        formComponents.getResult().setText("");
+        formComponents.getCode().setText("");
     }
 
     private void applyGridStyles(GridPane mainGrid) {
@@ -43,9 +45,9 @@ public class WindowConfig implements Constants {
     private void addFormComponentsToGrid(GridPane mainGrid, FormComponents formComponents) {
         mainGrid.add(formComponents.getHeaderText(), 0, 0, 2, 1);
         mainGrid.add(formComponents.getAsciiLabelDesc(), 0, 1);
-        mainGrid.add(formComponents.getAsciiCode(), 1, 1);
+        mainGrid.add(formComponents.getCode(), 1, 1);
         mainGrid.add(formComponents.getResultLabelDesc(), 0, 2);
-        mainGrid.add(formComponents.getResultText(), 1, 2);
+        mainGrid.add(formComponents.getResult(), 1, 2);
         mainGrid.add(formComponents.getHbBtnCalc(), 1, 4);
         mainGrid.add(formComponents.getHbBtnClear(), 0, 4);
     }

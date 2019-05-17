@@ -17,8 +17,8 @@ public class FormComponents implements Constants {
     private final Label resultLabelDesc;
     private final HBox hbBtnCalc;
     private final HBox hbBtnClear;
-    private TextField asciiCode;
-    private TextField resultText;
+    private TextField code;
+    private TextField result;
     private Button calculateButton;
     private Button clearButton;
 
@@ -27,11 +27,11 @@ public class FormComponents implements Constants {
         headerText = new Text(HEADER_TEXT);
         headerText.setFont(Font.font(HEADER_FONT, FontWeight.NORMAL, HEADER_SIZE));
         asciiLabelDesc = new Label(ASCII_LABEL_DESC);
-        asciiCode = new TextField();
+        code = new TextField();
         resultLabelDesc = new Label(RESULT_LABEL_DESC);
-        resultText = new TextField();
-        resultText.setStyle(RESULT_TEXT_STYLE);
-        resultText.setDisable(true);
+        result = new TextField();
+        result.setStyle(RESULT_TEXT_STYLE);
+        result.setDisable(true);
         calculateButton = new Button(CALC_BUTTON_DESC);
         hbBtnCalc = new HBox(GAP_SIZE);
         hbBtnCalc.setAlignment(Pos.BOTTOM_RIGHT);
@@ -54,20 +54,20 @@ public class FormComponents implements Constants {
         return resultLabelDesc;
     }
 
-    public TextField getAsciiCode() {
-        return asciiCode;
+    public TextField getCode() {
+        return code;
     }
 
-    public void setAsciiCode(TextField asciiCode) {
-        this.asciiCode = asciiCode;
+    public void setCode(TextField code) {
+        this.code = code;
     }
 
-    public TextField getResultText() {
-        return resultText;
+    public TextField getResult() {
+        return result;
     }
 
-    public void setResultText(TextField resultText) {
-        this.resultText = resultText;
+    public void setResult(TextField result) {
+        this.result = result;
     }
 
     public Button getCalculateButton() {
