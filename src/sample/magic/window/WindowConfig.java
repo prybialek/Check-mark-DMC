@@ -21,9 +21,8 @@ public class WindowConfig implements Constants {
         addFormComponentsToGrid(mainGrid, formComponents);
 
         formComponents.getCalculateButton().setOnAction(e -> {
-
-            if (!formComponents.getCode().getText().matches("[1-5]")) {
-                formComponents.getResult().setText("Wprowadzony kod zawiera błędy.");
+            if (!formComponents.getCode().getText().matches(ALLOW_CHARACTERS)) {
+                formComponents.getResult().setText(ERROR_MESSAGE);
             } else {
                 formComponents.getResult().setText(CodeConverter.convert(formComponents.getCode().getText()));
             }

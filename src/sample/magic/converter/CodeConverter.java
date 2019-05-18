@@ -1,7 +1,6 @@
 package sample.magic.converter;
 
 import sample.magic.constants.Constants;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +9,12 @@ import java.util.Objects;
 public class CodeConverter implements Constants {
 
     public static String convert(String code) {
+        int sum = 0;
         Map<Character, Integer> norm = generateNorm();
 
-        int sum = 0;
         for (Character c : code.toCharArray()) {
-            if (norm.containsKey(c)) {
+            if (norm.containsKey(c) && !Objects.isNull(norm.get(c))) {
                 sum += norm.get(c);
-            } else {
-                throw new NotImplementedException();
             }
         }
 
@@ -25,9 +22,8 @@ public class CodeConverter implements Constants {
     }
 
     private static Character matchResult(Map<Character, Integer> norm, int resultNumber) {
-
-        for(Map.Entry<Character, Integer> entry : norm.entrySet()) {
-            if(Objects.equals(resultNumber, entry.getValue())) {
+        for (Map.Entry<Character, Integer> entry : norm.entrySet()) {
+            if (Objects.equals(resultNumber, entry.getValue())) {
                 return entry.getKey();
             }
         }
