@@ -20,9 +20,14 @@ public class WindowConfig implements Constants {
         applyGridStyles(mainGrid);
         addFormComponentsToGrid(mainGrid, formComponents);
 
-        formComponents.getCalculateButton().setOnAction(e ->
-                formComponents.getResult().setText(CodeConverter.convert(formComponents.getCode().getText()))
-        );
+        formComponents.getCalculateButton().setOnAction(e -> {
+
+            if (!formComponents.getCode().getText().matches("[1-5]")) {
+                formComponents.getResult().setText("Wprowadzony kod zawiera błędy.");
+            } else {
+                formComponents.getResult().setText(CodeConverter.convert(formComponents.getCode().getText()));
+            }
+        });
 
         formComponents.getClearButton().setOnAction(e -> clearForm(formComponents));
 

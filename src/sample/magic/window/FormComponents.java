@@ -28,7 +28,11 @@ public class FormComponents implements Constants {
         headerText = new Text(HEADER_TEXT);
         headerText.setFont(Font.font(HEADER_FONT, FontWeight.NORMAL, HEADER_SIZE));
         asciiLabelDesc = new Label(ASCII_LABEL_DESC);
-        code = new TextField();
+        code = new TextField() {
+            @Override public void replaceText(int start, int end, String text) {
+                super.replaceText(start, end, text.toUpperCase());
+            }
+        };
         code.setPrefWidth(TEXTFIELDS_WIDTH);
         resultLabelDesc = new Label(RESULT_LABEL_DESC);
         result = new TextField();
@@ -58,7 +62,6 @@ public class FormComponents implements Constants {
             }
         };
     }
-
 
     public Text getHeaderText() {
         return headerText;

@@ -16,7 +16,7 @@ public interface Constants {
     int DIVISOR = 43;
     int HEADER_SIZE = 20;
     int PADDING_SIZE = 25;
-    int WINDOW_WIDTH = 300;
+    int WINDOW_WIDTH = 320;
     int WINDOW_HEIGHT = 200;
-    int TEXTFIELDS_WIDTH = 200;
+    int TEXTFIELDS_WIDTH = 220;
 }

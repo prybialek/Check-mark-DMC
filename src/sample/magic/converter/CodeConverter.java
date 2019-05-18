@@ -21,9 +21,7 @@ public class CodeConverter implements Constants {
             }
         }
 
-        int resultNumber = sum % DIVISOR;
-
-        return code + matchResult(norm, resultNumber);
+        return code + matchResult(norm, sum % DIVISOR);
     }
 
     private static Character matchResult(Map<Character, Integer> norm, int resultNumber) {
